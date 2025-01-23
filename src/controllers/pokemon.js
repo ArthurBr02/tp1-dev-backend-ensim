@@ -33,7 +33,27 @@ const getPokemonById = async (id) => {
     return data;
 }
 
+const getPokemonByFilters = async (filters) => {
+
+    if (filters.hp) {
+        if (Number.isNaN(parseInt(filters.hp))) {
+            return utils.asyncError("Hp must be a number");
+        }
+        filters.hp = Number(filters.hp);
+    }
+
+    let data = pokemonService.getPokemonByFilters(filters);
+    data.then((result) => {
+        return result;
+    }).catch((err) => {
+        return err;
+    });
+
+    return data;
+}
+
 module.exports = {
     getPokemonList,
-    getPokemonById
+    getPokemonById,
+    getPokemonByFilters
 }
