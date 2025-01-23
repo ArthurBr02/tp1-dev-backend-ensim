@@ -10,6 +10,8 @@
   "author": "Arthur BRATIGNY",
   "license": "ISC",
   "dependencies": {
-    "express.js": "^1.0.0"
+    "dotenv": "^16.4.7",
+    "express.js": "^1.0.0",
+    "tp1-dev-backend-ensim": "file:"
   }
 }
