@@ -6,32 +6,14 @@ dotenv.config()
 
 db.connect(process.env.MONGO_URI);
 
-const Pokemon = db.model("Pokemon", pokemonModel);
-// const test = new Pokemon({
-//     "id": 15,
-//     "name": {
-//         "english": "Beedrill",
-//         "japanese": "スピアー",
-//         "chinese": "大针蜂",
-//         "french": "Dardargnan"
-//     },
-//     "type": [
-//         "Bug",
-//         "Poison"
-//     ],
-//     "base": {
-//         "HP": 65,
-//         "Attack": 90,
-//         "Defense": 40,
-//         "Sp. Attack": 45,
-//         "Sp. Defense": 80,
-//         "Speed": 75
-//     }
-// });
+const Pokemon = db.model("pokemon", pokemonModel, 'pokemons');
 
-
-
-exports.getPokemonList = async () => {
+const getPokemonList = async () => {
+    console.log("Getting pokemons from mongodb");
     const pokemons = await Pokemon.find();
     return pokemons;
+}
+
+module.exports = {
+    getPokemonList
 }
